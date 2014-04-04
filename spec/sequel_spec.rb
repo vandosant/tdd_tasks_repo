@@ -24,4 +24,14 @@ describe "tasks repository" do
     expect(actual).to eq expected
 
   end
+
+  it "lets you delete a task" do
+    tasks = TasksRepository.new
+    tasks.create_table
+    tasks.insert_row({:name => "buy milk"})
+    tasks.insert_row({:name => "buy chocolate"})
+    tasks.delete_row({:name => "buy milk"})
+    actual = tasks.read
+    expected = [{:id => 2, :name => "buy chocolate", :complete => false}]
+  end
 end

@@ -24,6 +24,10 @@ class TasksRepository
     @table.where(existing_row).update(new_value)
   end
 
+  def delete_row(row_to_delete)
+    @table.where(row_to_delete).delete
+  end
+
   def read
     @table.to_a
   end
