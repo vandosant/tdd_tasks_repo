@@ -1,7 +1,7 @@
 require './lib/tasks_repository'
 
-describe "database" do
-  it "it allows you to create tasks" do
+describe "tasks repository" do
+  it "allows you to create tasks" do
     tasks = TasksRepository.new
     tasks.create_table
     tasks.insert_row({:name => "buy milk"})
