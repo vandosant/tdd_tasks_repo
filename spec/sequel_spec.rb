@@ -3,7 +3,6 @@ require './lib/tasks_repository'
 describe "database" do
   it "it allows you to create tasks" do
     tasks = TasksRepository.new
-    tasks.drop_table
     tasks.create_table
     tasks.create_task({:name => "buy milk"})
     tasks.create_task({:name => "buy chocolate"})

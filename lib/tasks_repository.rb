@@ -8,7 +8,7 @@ class TasksRepository
   end
 
   def create_table
-    @db.create_table :task_table do
+    @db.create_table! :task_table do
       primary_key :id
       String :name
       Boolean :completed?, :default => false
@@ -22,9 +22,5 @@ class TasksRepository
 
   def read
     @tasks.to_a
-  end
-
-  def drop_table
-    @db.drop_table :task_table
   end
 end
