@@ -5,6 +5,7 @@ class TasksRepository
 
   def initialize
     @db = Sequel.connect('postgres://gschool_user:password@localhost:5432/tasks_repository_test')
+    @table = @db[:task_table]
   end
 
   def create_table
@@ -13,14 +14,13 @@ class TasksRepository
       String :name
       Boolean :completed?, :default => false
     end
-    @tasks = @db[:task_table]
   end
 
-  def create_task(task)
-    @tasks.insert(task)
+  def insert_row(task)
+    @table.insert(task)
   end
 
   def read
-    @tasks.to_a
+    @table.to_a
   end
 end
