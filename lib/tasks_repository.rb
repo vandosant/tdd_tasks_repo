@@ -28,6 +28,10 @@ class TasksRepository
     @table.where(row_to_delete).delete
   end
 
+  def find(id)
+    @table.where(:id => id).to_a
+  end
+
   def read
     @table.to_a
   end

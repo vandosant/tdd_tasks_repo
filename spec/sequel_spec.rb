@@ -36,4 +36,15 @@ describe "tasks repository" do
 
     expect(actual).to eq expected
   end
+
+  it "is able to find a task by id" do
+    tasks = TasksRepository.new
+    tasks.create_table
+    tasks.insert_row({:name => "buy milk"})
+    tasks.insert_row({:name => "buy chocolate"})
+    actual = tasks.find(2)
+    expected = [{:id => 2, :name => "buy chocolate", :completed => false}]
+
+    expect(actual).to eq expected
+  end
 end
