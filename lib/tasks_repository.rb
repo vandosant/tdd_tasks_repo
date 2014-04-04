@@ -12,12 +12,16 @@ class TasksRepository
     @db.create_table! :task_table do
       primary_key :id
       String :name
-      Boolean :completed?, :default => false
+      Boolean :completed, :default => false
     end
   end
 
-  def insert_row(task)
-    @table.insert(task)
+  def insert_row(new_row)
+    @table.insert(new_row)
+  end
+
+  def update_row(existing_row, new_value)
+    @table.where(existing_row).update(new_value)
   end
 
   def read
