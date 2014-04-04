@@ -32,6 +32,8 @@ describe "tasks repository" do
     tasks.insert_row({:name => "buy chocolate"})
     tasks.delete_row({:name => "buy milk"})
     actual = tasks.read
-    expected = [{:id => 2, :name => "buy chocolate", :complete => false}]
+    expected = [{:id => 2, :name => "buy chocolate", :completed => false}]
+
+    expect(actual).to eq expected
   end
 end
